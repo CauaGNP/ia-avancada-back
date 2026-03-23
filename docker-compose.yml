@@ -1,0 +1,9 @@
+services:
+  api:
+    build: .
+    container_name: busca-semantica
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data:/app/data
+    restart: unless-stopped

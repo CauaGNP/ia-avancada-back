@@ -8,8 +8,11 @@ WORKDIR /app
 
 COPY requirements.txt .
 RUN pip install --no-cache-dir --upgrade pip && \
-    pip install --no-cache-dir torch --index-url https://download.pytorch.org/whl/cpu && \
     pip install --no-cache-dir -r requirements.txt
+
+ENV HF_HOME=/app/data/hf_cache
+
+RUN python -c "from sentence_transformers import SentenceTransformer; SentenceTransformer('COLOQUE-O-NOME-DO-MODELO-AQUI')"
 
 COPY api.py .
 
